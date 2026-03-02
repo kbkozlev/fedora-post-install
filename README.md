@@ -60,12 +60,6 @@ chmod +x post_install.sh
 ./post_install.sh
 ```
 
-Or:
-
-```bash
-bash post_install.sh
-```
-
 ## Post-Run
 
 - Reboot is recommended, especially after firmware updates and multimedia/driver changes.

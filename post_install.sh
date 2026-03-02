@@ -250,8 +250,17 @@ run sudo dnf install -y langpacks-bg langpacks-de langpacks-en
 log "Installing desired software..."
 run sudo dnf install -y btrfs-assistant
 
-run sudo flatpak install -y flathub it.mijorus.gearlever
-run sudo flatpak install -y flathub org.onlyoffice.desktopeditors
+if flatpak_is_installed "it.mijorus.gearlever"; then
+  log "Flatpak already installed: it.mijorus.gearlever (system); skipping."
+else
+  run sudo flatpak install --system --noninteractive -y flathub it.mijorus.gearlever
+fi
+
+if flatpak_is_installed "org.onlyoffice.desktopeditors"; then
+  log "Flatpak already installed: org.onlyoffice.desktopeditors (system); skipping."
+else
+  run sudo flatpak install --system --noninteractive -y flathub org.onlyoffice.desktopeditors
+fi
 
 
 # -----------------------------
