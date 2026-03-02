@@ -242,7 +242,11 @@ fi
 # 9) Software changes (easy to extend)
 # -----------------------------
 log "Removing unwanted software..."
-run sudo dnf remove -y libreoffice
+if rpm -qa 'libreoffice*' | grep -q .; then
+  run sudo dnf remove -y 'libreoffice*'
+else
+  log "LibreOffice packages not found; skipping removal."
+fi
 
 log "Installing language packs after dependency removal"
 run sudo dnf install -y langpacks-bg langpacks-de langpacks-en
